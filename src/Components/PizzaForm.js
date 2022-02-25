@@ -18,7 +18,7 @@ import * as yup from "yup";
 
 // const initialOrders = [];
 const PizzaForm = (props) => {
-  const { change, submit } = props;
+  const { change, submit, errors } = props;
   const { name, size, onions, tomatoes, bellPeppers, roastedGarlic, special } =
     props.values;
 
@@ -138,8 +138,10 @@ const PizzaForm = (props) => {
         </label>
         <input type="submit" value="Order Pizza!" />
 
-        {/* <button id="order-button">Add to Order</button> */}
+        <button id="order-button">Add to Order</button>
       </form>
+      <p>{errors.name}</p>
+      <p>{errors.size}</p>
     </div>
   );
 };
