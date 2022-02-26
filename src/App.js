@@ -4,6 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import PizzaForm from "./Components/PizzaForm";
 import schema from "./validation/formSchema";
 import * as yup from "yup";
+import axios from "axios";
 
 const initialFormValues = {
   name: "",
@@ -29,8 +30,16 @@ const App = () => {
 
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [orders, setOrders] = useState([]);
+
   const handleSubmit = () => {
-    //wip
+    axios
+      .post("https://reqres.in/api/orders", formValues)
+      .then((res) => {
+        console.log(res);
+        // setOrders([res.data, ...orders]);
+      })
+      .catch((err) => console.error(err));
   };
   const inputChange = (name, value) => {
     validate(name, value);
@@ -71,7 +80,15 @@ const App = () => {
             values={formValues}
             change={inputChange}
             errors={formErrors}
+            submit={handleSubmit}
           />
+          {orders.map((order) => {
+            return (
+              <div key={order.id}>
+                <p>{order.name}</p>
+              </div>
+            );
+          })}
         </Route>
       </Switch>
     </div>

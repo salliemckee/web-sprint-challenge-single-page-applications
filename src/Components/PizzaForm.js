@@ -31,6 +31,7 @@ const PizzaForm = (props) => {
     evt.preventDefault();
     submit();
   };
+
   // const [formValues, setFormValues] = useState(initialFormValues);
   // const [formErrors, setFormErrors] = useState(initialFormErrors);
 
@@ -79,7 +80,12 @@ const PizzaForm = (props) => {
         </label>
         <label>
           &nbsp;Pizza Size&nbsp;
-          <select id="size-dropdown" name="size" value={size} type="dropdown">
+          <select
+            id="size-dropdown"
+            name="size"
+            type="dropdown"
+            onChange={onChange}
+          >
             <option value="">---Select Pizza Size---</option>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
@@ -131,14 +137,16 @@ const PizzaForm = (props) => {
           <h4>Special Instructions</h4>
           <input
             value={special}
+            onChange={onChange}
             id="special-text"
-            name="specialText"
+            name="special"
             type="text"
           ></input>
         </label>
-        <input type="submit" value="Order Pizza!" />
 
-        <button id="order-button">Add to Order</button>
+        <button id="order-button" onClick={onSubmit}>
+          Add to Order
+        </button>
       </form>
       <p>{errors.name}</p>
       <p>{errors.size}</p>
