@@ -1,22 +1,5 @@
-import React, { useState, useEffect } from "react";
-import schema from "../validation/formSchema";
-import * as yup from "yup";
+import React from "react";
 
-// const initialFormValues = {
-//   name: "",
-//   size: "",
-//   onions: false,
-//   tomatoes: false,
-//   bellPeppers: false,
-//   roastedGarlic: false,
-//   special: "",
-// };
-
-// const initialFormErrors = {
-//   name: "",
-// };
-
-// const initialOrders = [];
 const PizzaForm = (props) => {
   const { change, submit, errors } = props;
   const { name, size, onions, tomatoes, bellPeppers, roastedGarlic, special } =
@@ -31,31 +14,6 @@ const PizzaForm = (props) => {
     evt.preventDefault();
     submit();
   };
-
-  // const [formValues, setFormValues] = useState(initialFormValues);
-  // const [formErrors, setFormErrors] = useState(initialFormErrors);
-
-  // const validate = (name, value) => {
-  //   yup
-  //     .reach(schema, name)
-  //     .validate(value)
-  //     .then(() =>
-  //       setFormErrors({
-  //         ...formErrors,
-  //         [name]: "",
-  //       }).catch((err) =>
-  //         setFormErrors({ ...formErrors, [name]: err.errors[0] })
-  //       )
-  //     );
-  // };
-
-  // const inputChange = (name, value) => {
-  //   // validate(name, value);
-  //   setFormValues({
-  //     ...formValues,
-  //     [name]: value,
-  //   });
-  // };
 
   return (
     <div className="pizza-form submit">
@@ -99,7 +57,6 @@ const PizzaForm = (props) => {
             checked={onions}
             name="onions"
             type="checkbox"
-            // checked={checked}
             onChange={onChange}
           ></input>
         </label>
@@ -109,7 +66,6 @@ const PizzaForm = (props) => {
             checked={tomatoes}
             name="tomatoes"
             type="checkbox"
-            // checked={checked}
             onChange={onChange}
           ></input>
         </label>
@@ -119,7 +75,6 @@ const PizzaForm = (props) => {
             checked={bellPeppers}
             name="bellPeppers"
             type="checkbox"
-            // checked={checked}
             onChange={onChange}
           ></input>
         </label>
@@ -129,7 +84,6 @@ const PizzaForm = (props) => {
             checked={roastedGarlic}
             name="roastedGarlic"
             type="checkbox"
-            // checked={checked}
             onChange={onChange}
           ></input>
         </label>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Switch, Route, Link } from "react-router-dom";
 import PizzaForm from "./Components/PizzaForm";
@@ -20,8 +20,6 @@ const initialFormErrors = {
   name: "",
 };
 
-const initialOrders = [];
-
 const App = () => {
   const history = useHistory();
   const routeToPizza = () => {
@@ -36,8 +34,7 @@ const App = () => {
     axios
       .post("https://reqres.in/api/orders", formValues)
       .then((res) => {
-        console.log(res);
-        // setOrders([res.data, ...orders]);
+        setOrders([res.data, ...orders]);
       })
       .catch((err) => console.error(err));
   };
